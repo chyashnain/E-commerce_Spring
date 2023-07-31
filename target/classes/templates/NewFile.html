@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="row justify-content-center mb-3" id="products-container">
+		<!-- new product -->
+		<div th:each="product : ${products}">
+			<div id="product-card" class="card shadow-0 border rounded-3">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+							<div class="bg-image hover-zoom ripple rounded ripple-surface">
+								<img id="product-img" style="width: 131px; height: 197px"
+									th:src="@{${'../images/' + product.imageUrl}}" class="w-100" /> <a
+									href="#!">
+									<div class="hover-overlay">
+										<div class="mask"
+											style="background-color: rgba(253, 253, 253, 0.15);"></div>
+									</div>
+								</a>
+							</div>
+						</div>
+						<div class="col-md-6 col-lg-6 col-xl-6">
+							<h5 id="product-name" th:text="${product.productName}"></h5>
+							<div class="d-flex flex-row">
+								<div id="product-rating" class="text-danger mb-1 me-2"
+									th:text="${product.productRating}"></div>
+								<span id="product-reviews" th:text="${product.productReviews}"></span>
+							</div>
+							<div class="mt-1 mb-0 text-muted small">
+								<span id="product-material" th:text="${product.productMaterial}"></span>
+								<span class="text-primary"> • </span> <span id="product-weight"
+									th:text="${product.productWeight}"></span> <span
+									class="text-primary"> • </span> <span id="product-finish"
+									th:text="${product.productFinish}"></span> <br />
+							</div>
+							<div class="mb-2 text-muted small">
+								<span id="product-description"
+									th:text="${product.productDescription}"></span> <span
+									class="text-primary"> • </span> <span id="product-gender"
+									th:text="${product.productGender}"></span> <span
+									class="text-primary"> • </span> <span id="product-style"
+									th:text="${product.productStyle}"></span> <br />
+							</div>
+							<p id="product-info" class="text-truncate mb-4 mb-md-0"
+								th:text="${product.productInfo}"></p>
+						</div>
+						<div
+							class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+							<div class="d-flex flex-row align-items-center mb-1">
+								<h4 id="product-price" class="mb-1 me-1"
+									th:text="${product.productPrice}">$</h4>
+								<span class="text-danger" id="product-discount"><s
+									th:text="${product.totalPrice}"></s></span>
+							</div>
+							<h6 class="text-success" id="product-shipping">Free Shipping</h6>
+							<div class="d-flex flex-column mt-4">
+								<button class="btn btn-primary btn-sm" type="button">Details</button>
+								<button class="btn btn-outline-primary btn-sm mt-2"
+									type="button">Add to wishlist</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
